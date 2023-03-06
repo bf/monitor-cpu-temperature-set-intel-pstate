@@ -17,3 +17,12 @@ To be combined with `thinkfan` which controls the fan speed and `tlp` which cont
 - Run `systemctl daemon-reload` to reload systemd
 - Run `systemctl enable monitor-cpu-temperature-set-intel-pstate.service` to activate service
 - Run `systemctl start monitor-cpu-temperature-set-intel-pstate.service` to start
+
+# Logging
+
+If you want to see it in action, run some CPU-intensive tasks (e.g. open multiple twitch streams at the same time).
+Then you can monitor `max_perf_pct` and your CPU temperature like this:
+
+```bash
+watch -n 1 "cat /sys/devices/system/cpu/intel_pstate/max_perf_pct; sensors"
+```
