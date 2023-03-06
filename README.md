@@ -26,3 +26,27 @@ Then you can monitor `max_perf_pct` and your CPU temperature like this:
 ```bash
 watch -n 1 "cat /sys/devices/system/cpu/intel_pstate/max_perf_pct; sensors"
 ```
+
+# Thinkfan configuration
+
+We use Thinkfan for changing CPU cooling fan speed on Thinkpad 430 with this config `/etc/thinkfan.conf`
+
+```conf
+# Thinkfan config for Thinkpad T430 with i7-3720QM
+tp_fan /proc/acpi/ibm/fan
+hwmon /sys/devices/platform/coretemp.0/hwmon/hwmon4/temp3_input
+hwmon /sys/devices/platform/coretemp.0/hwmon/hwmon4/temp4_input
+hwmon /sys/devices/platform/coretemp.0/hwmon/hwmon4/temp5_input
+hwmon /sys/devices/platform/coretemp.0/hwmon/hwmon4/temp1_input
+hwmon /sys/devices/platform/coretemp.0/hwmon/hwmon4/temp2_input
+
+
+(0,	0,	55)
+(1,	48,	60)
+(2,	50,	61)
+(3,	52,	63)
+(4,	56,	65)
+(5,	59,	66)
+(7,	63,     79)
+("level full-speed", 75, 32767) # 5000 rpm
+```
