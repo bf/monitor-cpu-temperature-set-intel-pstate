@@ -1,0 +1,12 @@
+[Unit]
+Description=Monitor CPU temperature and decrease/increase intel pstate max performance percentage to cool down.
+
+[Service]
+Type=simple
+ExecStart=/bin/bash /usr/bin/monitor-temp.sh
+PIDFile=/run/monitor-cpu-temperature-set-intel-pstate.pid
+ExecReload=/bin/kill -HUP $MAINPID
+
+
+[Install]
+WantedBy=multi-user.target
